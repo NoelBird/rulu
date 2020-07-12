@@ -1,6 +1,7 @@
 #include<iostream>
 #include"image.hpp"
 
+extern "C" {
 void testColor()
 {
 	Image dog;
@@ -9,13 +10,24 @@ void testColor()
 	cv::waitKey(0);
 }
 
-void testLoad()
+
+	__declspec(dllexport) void testLoad()
+	{
+		Image dog;
+		dog.load("dog.jpg");
+		dog.show("Test Load");
+		dog.showLayer("Test Load");
+		cv::waitKey(0);
+		cv::destroyAllWindows();
+	}
+
+
+	__declspec(dllexport) void testConv()
 {
 	Image dog;
 	dog.load("dog.jpg");
+	dog.simpleConv();
 	dog.show("Test Load");
-	dog.showLayer("Test Load");
-	cv::waitKey(0);
 }
 
 void testRotate()
@@ -29,6 +41,7 @@ void testRotate()
 	end = clock();
 	printf("Rotations: %lf seconds\n", (double)(end - start) / CLOCKS_PER_SEC);
 	dog.show("Test Rotate");
+	cv::waitKey(0);
 
 	Image random;
 	random.random(3, 3, 3);
@@ -39,24 +52,26 @@ void testRotate()
 	random.show("Test Rotate Random");
 	cv::waitKey(0);
 }
-
-void testUpsample()
-{
-	Image dog;
-	dog.load("dog.jpg");
-	
-	int n = 2;
-
-	dog.upsample(n);
-	dog.show("Test Upsample");
-	dog.showLayer("Test Upsample");
-}
+//
+//void testUpsample()
+//{
+//	Image dog;
+//	dog.load("dog.jpg");
+//	
+//	int n = 2;
+//
+//	dog.upsample(n);
+//	dog.show("Test Upsample");
+//	dog.showLayer("Test Upsample");
+//}
 
 int main()
 {
-	testLoad();
-	// testUpsample();
+	// testLoad();
+	testConv();
 	// testRotate();
+	// testUpsample();
+	
 	// testColor();
 	//test_backpropagate();
 	//test_convolve();
@@ -84,4 +99,5 @@ int main()
 	
 	cv::waitKey(0);
 	return 0;
+}
 }

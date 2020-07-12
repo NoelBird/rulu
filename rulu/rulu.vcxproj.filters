@@ -21,12 +21,27 @@
     <ClInclude Include="src\image.hpp">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="src\conv_layer.hpp">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="network.hpp">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="layer.hpp">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\image.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="src\tests.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="src\conv_layer.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="src\simple_logic_learner.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

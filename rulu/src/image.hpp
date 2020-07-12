@@ -8,10 +8,15 @@
 class Image
 {
 private:
-	cv::Mat mMat;
+	int mRows = 0;
+	int mCols = 0;
+	int mChannels = 0;
+	int mType = 0;
+	int mStep = 0;
+	std::vector<double> mData;
 public:
 	Image() {};
-	Image(const Image& ref):mMat(ref.mMat) {};
+	// Image(const Image& ref):mMat(ref.mMat) {};
 	void load(const char* filename);
 	void show(const char* title);
 
@@ -30,7 +35,7 @@ public:
 	void rotate180();
 	void upsample(int stride);
 	void random(int rows, int cols, int channels);
-
+	void simpleConv();
 
 	// 레이어 함수
 	// TODO: 새로운 class로 분할하기
@@ -46,4 +51,6 @@ public:
 	void random(int size, int channels);
 	void show(const char* title);
 	void update();
+
+	void conv2d(int mc, Kernel kernel, int kc, int stride, Image out, int oc);
 };
